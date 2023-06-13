@@ -1,0 +1,40 @@
+## YAML Template.
+---
+version: '3.8'
+services:
+  payara-server:
+    depends_on:
+      - mysql.8
+    image: payara/server-full:5.2021.10-jdk11
+    environment:
+        LANGUAGE: es_PE:es
+        LANG: es_PE.UTF-8
+        LC_ALL: es_PE.UTF-8
+    ports:
+      - '18080:8080'
+      - '14848:4848'
+    volumes:
+      - ./config/post-boot-commands.asadmin:/opt/payara/config/post-boot-commands.asadmin
+      - ./domains/domain1/lib:/opt/payara/appserver/glassfish/domains/domain1/lib
+      - ./deployments:/opt/payara/deployments
+    networks:
+        - salesnet
+  mysql.8:
+      container_name: mysql_sales
+      image: mysql:latest
+      environment:
+          MYSQL_ROOT_PASSWORD: root
+          TZ: America/Lima
+          MYSQL_USER: root
+          MYSQL_PASSWORD: 123456
+          MYSQL_DATABASE: desarrollosocial
+      ports:
+          - '3316:3306'
+      command: --init-file /data/application/baseHackaton.sql
+      volumes:
+          - ./mysql-volumes:/var/lib/mysql
+          - ./baseHackaton.sql:/data/application/baseHackaton.sql
+      networks:
+          - salesnet
+networks:
+    salesnet:           
