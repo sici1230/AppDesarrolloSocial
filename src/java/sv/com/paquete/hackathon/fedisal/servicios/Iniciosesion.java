@@ -7,6 +7,7 @@ package sv.com.paquete.hackathon.fedisal.servicios;
 
 import java.io.Serializable;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import sv.com.paquete.hackathon.fedisal.entidades.Login;
 
@@ -18,19 +19,18 @@ import sv.com.paquete.hackathon.fedisal.entidades.Login;
 @RequestScoped
 public class Iniciosesion implements Serializable{
     
-    private Login sesion;
+    @Inject
+    private Login login;
 
     public void iniciarsesion(){
         System.out.println("Prueba de llamado al metodo");
     }
-    
-    public Login getSesion() {
-        return sesion;
+
+    public Login getLogin() {
+        return login;
     }
 
-    public void setSesion(Login sesion) {
-        this.sesion = sesion;
+    public void setLogin(Login login) {
+        this.login = login;
     }
-    
-    
 }

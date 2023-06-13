@@ -4,32 +4,36 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-    
-    
+
     <h:head>
-        <title>Facelet Title</title>
+        <title>Desarrollo Social</title>
+        <h:outputStylesheet library="css" name="iniciosesion.css"/>
     </h:head>
     <h:body>
-<div class="container">
-    <h:outputText>Bienvenido </h:outputText>
-        
-        <div class="form-group">
-            <p:outputLabel  value="usuario: " for="username"/>
-            
-            <p:inputText  id="username" value="#{Iniciosesion.login.username}"/>
-        </div>
-        
-        <div class="form-group">
-            <p:outputLabel for="password" value="contrasenia"/>
-            <p:password  value="#{Iniciosesion.login.password}" id="password"/>
-        </div>
-        
-        <div class="form-group">
-            <p:commandButton  value="Iniciar sesion" action="#{Iniciosesion.iniciarsesion()}"/>
-        </div>
-        
-    <p:outputLabel value="¿No tienes una cuenta ? " > <p:commandLink action="registro.xhtml" value="Registrate aqui"/></p:outputLabel>
-    </div>
+        <h:form>
+            <div class="container">
+                <h:outputText>Bienvenido </h:outputText>
+
+                <div class="form-group">
+                    <p:outputLabel  value="usuario: " for="username"/>
+
+                    <p:inputText  id="username" value="#{iniciosesion.login.username}"/>
+                </div>
+
+                <div class="form-group">
+                    <p:outputLabel for="password" value="contrasenia"/>
+                    <p:password  value="#{iniciosesion.login.password}" id="password"/>
+                </div>
+
+                <div class="form-group">
+                    <p:commandButton  value="Iniciar sesion" action="#{iniciosesion.iniciarsesion()}"/>
+                </div>
+                <p:fragment>
+                    <p:outputLabel value="¿No tienes una cuenta ? " > <p:commandLink  action="/registro.xhtml?faces-redirect=true" value="Registrate aqui"/></p:outputLabel>
+                </p:fragment>
+            </div>
+
+        </h:form>
     </h:body>
 </html>
 
