@@ -15,7 +15,7 @@ import sv.com.paquete.hackathon.fedisal.entidades.Login;
  *
  * @author HP
  */
-@Named
+@Named(value = "sesion")
 @RequestScoped
 public class Iniciosesion implements Serializable{
     
@@ -23,6 +23,8 @@ public class Iniciosesion implements Serializable{
     private Login login;
 
     public void iniciarsesion(){
+        System.out.println(login.getUsername());
+        System.out.println(login.getPassword());
         System.out.println("Prueba de llamado al metodo");
     }
 
